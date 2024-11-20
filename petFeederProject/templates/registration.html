@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register Here</h1>
+    {% if message %}
+        <div class="message">{{message}}</div>
+    {% endif %}
+
+    <div id="form-container">
+        <form method="POST">
+            <div id="form-container">
+                <input
+                required
+                name="username"
+                id="username"
+                type="email"
+                placeholder="Email"
+                class="form-control"
+                >
+            </div>
+            <div>
+                
+                <input
+                required
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Password"
+                class="form-control"
+                >
+            </div>
+            <div>
+                <button id="submit">Register</button>
+            </div>
+        </form>
+    </div>
+    <p>Already have an account? <a href="{{url_for('login')}}">Login</a></p>
+
+</body>
+</html>
