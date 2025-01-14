@@ -22,9 +22,11 @@
             <div class="user-profile">
                 {% if username %}
                     <div class="profile-info">
-                        {% if user[2] %}
-                            <img src="{{ url_for('static', filename='uploads/' + user[2]) }}" alt="Profile Picture" class="profile-img">
-                        {% endif %}
+                        <img 
+                            src="{{ url_for('static', filename='uploads/' + user[2]) if user[2] else url_for('static', filename='uploads/default-profile.png') }}" 
+                            alt="Profile Picture"  
+                            class="profile-img"
+                        >
                         <a href="{{url_for('profile')}}" class="username">{{ username }}</a>
                         <a href="{{url_for('logout')}}" class="logout">Logout</a>
                     </div>
@@ -36,7 +38,11 @@
 
         <div class="user-info-container">
             <div class="user-info">
-                <img src="{{ url_for('static', filename='uploads/' + user[2]) }}" alt="Profile Picture" class="profile-page-img">
+                <img 
+                    src="{{ url_for('static', filename='uploads/' + user[2]) if user[2] else url_for('static', filename='uploads/default-profile.png') }}" 
+                    alt="Profile Picture"  
+                    class="profile-img"
+                >
                 {% if user[1] %}
                     <p class="bio">Bio: {{ user[1] }}</p>
                 {% endif %}
