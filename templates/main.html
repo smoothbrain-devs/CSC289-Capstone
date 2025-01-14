@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+    <title>Homepage</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Paws & Portions – Precision feeding with love</h1>
+        </header>
+        <div class="navbar">
+            <div class="nav-links">
+                <a href="{{url_for('main')}}">Home</a>
+                <a href="{{url_for('about')}}">About Us</a>
+                <a href="{{url_for('schedule')}}">Schedule</a>
+            </div>
+            <div class="user-profile">
+                {% if username %}
+                    <div class="profile-info">
+                        {% if user[2] %}
+                            <img src="{{ url_for('static', filename='uploads/' + user[2]) }}" alt="Profile Picture" class="profile-img">
+                        {% endif %}
+                        <a href="{{url_for('profile')}}" class="username">{{ username }}</a>
+                        <a href="{{url_for('logout')}}" class="logout">Logout</a>
+                    </div>
+                {% else %}
+                    <a href="{{url_for('login')}}" class="login-link">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="main-info">
+            <div class="top-display">
+                <div class="horoscope-container">
+                    
+                </div>
+            </div>
+            <div class="top-display">
+                <h2>Your Pets</h2>
+                <div class="existing-pets">
+                    <!-- Display only the first three pets -->
+                    {% for pet in pets %}
+                    <div class="pet-info">
+                        <h3>{{ pet[2] }}:</h3> <!-- Pet Name -->
+                        <p>Age: {{ pet[3] }} Yr.</p> <!-- Pet Age -->
+                        <p>Type: {{ pet[5] }}</p> <!-- Pet Type -->
+                        <form action="{{ url_for('delete_pet', pet_id=pet[0]) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                    
+            
+                    <!-- Dropdown trigger button -->
+                    {% if pets|length >= 0 %}
+                        <div class="dropdown-container">
+                            <!-- Dropdown Button -->
+                            
+                        
+                            <!-- Dropdown Content -->
+                            <div id="dropdown-menu" class="dropdown-content">
+                                <a href="#" class="close-dropdown">Close</a>
+                                {% for pet in pets %}
+                                <div class="pet-info">
+                                    <h3>{{ pet[2] }}</h3> <!-- Pet Name -->
+                                    <p>Age: {{ pet[3] }} years</p> <!-- Pet Age -->
+                                    <p>Type: {{ pet[5] }}</p> <!-- Pet Type -->
+                                    <form action="{{ url_for('delete_pet', pet_id=pet[0]) }}" method="POST" style="display:inline;">
+                                        <button type="submit" class="delete-button">Delete</button>
+                                    </form>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>   
+                    {% endif %}
+                    <div id="add-pet-dropdown" class="dropdown-content" >
+                        <a href="#" class="close-dropdown">Close</a>
+                        <form action="/add-pet" method="POST">
+                            <label for="pet-name">Pet Name:</label><br>
+                            <input type="text" id="pet-name" name="pet_name" required><br><br>
+            
+                            <label for="pet-age">Pet Age:</label><br>
+                            <input type="number" id="pet-age" name="pet_age" min="0" required><br><br>
+            
+                            <label for="pet-type">Pet Type:</label><br>
+                            <input type="text" id="pet-type" name="pet_type" required><br><br>
+            
+                            <button action="/add-pet" type="submit" class="dropdown-button">Add Pet</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <a href="#add-pet-dropdown" class="add-pet-button">Add new</a>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

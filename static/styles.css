@@ -1,0 +1,397 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Main colors (Can be changed)*/
+  --primary-background: #f5f5f5;    /* Light gray background */
+  --navbar-bg: #e5f3fd;             /* Deep charcoal for navbar */
+  --profile-bg: #2a9df4;            /* Lighter charcoal for profile */
+  --login-bg: #e5f3fd;
+  /* Accent colors */
+  --accent: #ff7e67;                /* Coral accent */
+  --text-light: #ffffff;            /* White text */
+  --text-dark: #2d3436;             /* Dark text */
+}
+
+body{
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ***base container for every page*** */
+.container {
+  background-color: var(--text-light);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* ***start of profile-page*** */
+.user-info-container {
+  background-color: var(--text-light);
+  color: var(--text-dark); /* Instead of #001972 with opacity */
+  display: flex;
+  border-radius: 0px 70px 25px 0px;
+  max-width: fit-content;
+  width: 40%;
+  min-height: fit-content;
+  text-align: center; 
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.user-info h1 {
+  color: var(--text-dark);
+  margin: 10px 0;
+}
+
+.user-info img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  margin: 5px;
+  outline: var(--text-light) solid 2px;  
+}
+
+.user-info p {
+  background-color: var(--text-dark);
+  margin: 5px;
+  padding: 5px;
+  border-radius: 25px;
+  background-color: var(--login-bg);
+  justify-content: center;
+  outline: var(--text-light) solid 2px; 
+}
+
+.user-info a {
+  color: var(--text-dark);
+  margin: 10px;
+  border-radius: 25px;  
+}
+/* ***end of profile-page*** */
+
+/* ***Header for project name (can be changed to add to navbar)*** */
+.header {
+  background-color: var(--navbar-bg);
+  color: var(--text-dark);
+  text-align: center;
+  min-width: fit-content;
+  font-size: 3vh 3vw;
+}
+
+/* ***start of navigation bar*** */
+.navbar {
+  background-color: var(--navbar-bg);
+  color: var(--text-dark); /* Instead of opacity property */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  
+}
+
+.navbar a {
+  float: inline-start;
+  color: var(--text-dark);
+  text-decoration: none;
+  margin: 5px;
+  font-size: 1.05em;
+  outline: 1px black solid;
+  padding: 20px 20px;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+/* ***end of navigation bar*** */
+
+/* ***start of main.html*** */
+.main-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-self: center;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 20px;
+  max-height: 300px;
+}
+
+/* *** Horoscope display on main page*** */
+.horoscope-container {
+  outline: 1px black solid;
+  min-height: 250px;
+  max-height: 500px;
+}
+
+/* *** Display for top two elements on main page*** */
+.top-display {
+  outline: #2d3436 2px solid;
+  position: relative;
+  align-content: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-height: 300px;
+}
+
+.pet-display h3 {
+  margin: 5px 10px;
+  font-size: 1.2rem;
+  color: #2d3436;
+}
+
+.pet-display p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #2d3436;
+}
+
+.add-pet-button {
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* *** Scroll box for added pets *** */
+.existing-pets {
+  outline: 1px black solid;
+  border-radius: 5px;
+  position: relative;
+  max-height: 300px; /* Adjust this value to set the visible height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 200px;
+}
+/* Pet Info Styling */
+
+.pet-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #dfe6e9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  max-height: 200px;
+}
+
+.pet-info:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  padding: 5px;
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 15px;
+  border: none; /* Removes any default browser border */
+  outline: none; /* Removes the outline */
+}
+
+/* Add pet dropdown Button */
+.dropdown-button {
+  position: sticky; /* Position the button relative to the `.pet-display` container */
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.dropdown-button:hover {
+  background-color: #2980b9;
+}
+
+/* Ensures consistency between <a> and <button> */
+button.dropdown-button {
+  appearance: none; /* Remove browser-specific button styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; /* Remove default button borders */
+  font: inherit; /* Use the same font as the surrounding text */
+  padding: 10px 50px; /* Match padding with .dropdown-button */
+  background-color: #3498db; /* Match background */
+  color: white; /* Match text color */
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button.dropdown-button:hover {
+  background-color: #2980b9; /* Same hover effect */
+}
+
+
+/* Add pet dropdown Content */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: fixed; /* Position over the page */
+  top: 50px; /* Adjust to position higher */
+  left: 15%;
+  width: 70%; /* Full width */
+  background-color: #ffffff;
+  border: 1px solid #dfe6e9;
+  border-radius: 5px;
+  outline: #2d3436 2px solid;
+  max-height: 400px; /* Set a height limit */
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 20px;
+  
+}
+
+/* Toggles visibility for add pet dropdown  */
+#add-pet-dropdown:target {
+  display: block;
+}
+
+/* Close Button */
+.close-dropdown {
+  display: block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close-dropdown:hover {
+  background-color: #c0392b;
+}
+
+/* Profile picture and username container */
+.user-profile {
+  display: flex;
+  align-items: center; /* Aligns the profile picture and username vertically */
+}
+
+/* Styling for the profile picture */
+.profile-img {
+  width: 40px; /* Adjust the size of the profile picture */
+  height: 40px;
+  border-radius: 50%; /* Makes the image round */
+  margin-right: 10px; /* Adds space between the profile picture and the username */
+}
+
+/* Styling for the username */
+.username {
+  color: rgba(221, 221, 221, 1);
+  font-weight: bold;
+  margin-right: 15px; /* Space between username and logout link */
+}
+
+/* Styling for the logout link */
+.logout {
+  color: rgba(255, 99, 71, 1);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the login link */
+.login-link {
+  color: rgba(221, 221, 221, 1)
+  ;
+  text-decoration: none;
+}
+
+/* Profile info section */
+.profile-info {
+  display: flex;
+  align-items: center; /* Vertically centers the profile picture and username */
+}
+
+/* ***Start of Login-Page*** */
+
+.form-container {
+  background-color: #e5f3fd;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  
+  /* Centering with position and transform */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-container h1 {
+  text-align: center;
+  color: #2a9df4;
+  margin-bottom: 1rem;
+}
+
+ /* Styles the input for the login/registration form */
+.form-control {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #d0e6f7;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #2a9df4;
+  box-shadow: 0 0 5px rgba(42, 157, 244, 0.3);
+}
+
+.login-button {
+  text-align: center;
+  background-color: #a1e3a1; /* Light green background */
+  color: #ffffff; /* White text */
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px; /* Rounded shape */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #87d387; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+
